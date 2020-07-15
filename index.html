@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+      <style>
+          .bg-info {
+              background-color: #D5EAEF !important;
+          }
+      </style>
+    <div class="container">
+      <h3 class="text-center mt-5 bg-light text-dark py-5">
+        Конструктивная модель стоимости
+      </h3>
+      <ul class="nav nav-tabs justify-content-center mb-5">
+        <li class="nav-item">
+          <a class="nav-link active" data-target = 0 href="#">Базовый уровень (Basic COCOMO)</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  data-target = 1 href="#">Промежуточный уровень (Intermediate COCOMO)</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  data-target = 2 href="#">Детальный уровень (Advanced COCOMO)
+        </a>
+        </li>
+      </ul>
+      <div class="tabs">
+        <div class="tab-item border py-5 px-5" id='tab1'>
+            <div class="row">
+                <div class="col-md-6">
+        
+                    <div class="form-group">
+                        <label for="trud">Кол-во строк кода</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="kolStrok"
+                        />
+                      </div>
+        
+                      <div class="input-group mb-3 mt-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01"
+                            >Тип</label
+                          >
+                        </div>
+                        <select class="custom-select" id="tabOneSelectType">
+                          <option selected>Тип проекта</option>
+                          <option value="0">Распространенный</option>
+                          <option value="1">Полунезависимый</option>
+                          <option value="2">Встроенный</option>
+                        </select>
+                      </div>
+
+                 
+
+        
+                 
+                  <button type="submit" class="btn btn-secondary mt-3" id="tabOneBtn">Посчитать</button>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="px-5 py-5 bg-light">
+                        <div class="d-flex">
+                            <h5 class="">Трудоемкость</h5>
+                            <h4 class="ml-3" id="trudResult">0</h4>
+                        </div>
+                       
+
+                        <div class="d-flex">
+                            <h5 class="">Время</h5>
+                            <h4 class="ml-3" id="timeResult">0</h4>
+                        </div>
+                
+                    </div>  
+                </div>
+                
+              </div>
+        </div>
+
+        <div class="tab-item border py-5 px-5" id='tab2'>
+            <div class="row">
+                <div class="col-md-12">
+        
+                    <div class="form-group">
+                        <label for="trud">Кол-во строк кода</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="kolStrokTwo"
+                        />
+                      </div>
+        
+                      <div class="input-group mb-3 mt-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01"
+                            >Тип</label
+                          >
+                        </div>
+                        <select class="custom-select" id="tabTwoSelectType">
+                          <option selected>Тип проекта</option>
+                          <option value="0">Распространенный</option>
+                          <option value="1">Полунезависимый</option>
+                          <option value="2">Встроенный</option>
+                        </select>
+                      </div>
+
+                      
+                      <ul class="list-group list-group-flush" id="listTwo">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <p class="text-info">1 Требуемая надежность ПО</p> 
+                            <div class="item-atr" data-value = '0.75'>Очень низкий </div>
+                            <div class="item-atr" data-value = '0.88'>низкий </div>
+                            <div class="item-atr" data-value = '1.0'>cредний </div>
+                            <div class="item-atr" data-value = '1.15'>высокий </div>
+                            <div class="item-atr" data-value = '1.40'> очень высокий </div>
+                            <div class="item-atr" data-value = '1.65'> критический </div>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div class="text-info">2)Размер БД приложения</div>  
+                            <div class="item-atr" data-value = '0.75'>Очень низкий </div>
+                            <div class="item-atr" data-value = '0.94'>низкий </div>
+                            <div class="item-atr" data-value = '1.0'>cредний </div>
+                            <div class="item-atr" data-value = '1.08'>высокий </div>
+                            <div class="item-atr" data-value = '1.16'> очень высокий </div>
+                            <div class="item-atr" data-value = '1.65'> критический </div>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div class="text-info">   3)Сложность продукта</div>  
+                            <div class="item-atr" data-value = '0.7'>Очень низкий </div>
+                            <div class="item-atr" data-value = '0.85'>низкий </div>
+                            <div class="item-atr" data-value = '1.0'>cредний </div>
+                            <div class="item-atr" data-value = '1.15'>высокий </div>
+                            <div class="item-atr" data-value = '1.30'> очень высокий </div>
+                            <div class="item-atr" data-value = '1.65'> критический </div>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <p class="text-info">   4) Ограничения быстродействия  <br> при выполнении программы</p>   
+                            <div class="item-atr" data-value = '0.75'>Очень низкий </div>
+                            <div class="item-atr" data-value = '0.75'>низкий </div>
+                            <div class="item-atr" data-value = '1.0'>cредний </div>
+                            <div class="item-atr" data-value = '1.11'>высокий </div>
+                            <div class="item-atr" data-value = '1.30'> очень высокий </div>
+                            <div class="item-atr" data-value = '1.66'> критический </div>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div class="text-info">    5)Ограничение памяти</div>    
+                            <div class="item-atr" data-value = '0.75'>Очень низкий </div>
+                            <div class="item-atr" data-value = '0.75'>низкий </div>
+                            <div class="item-atr" data-value = '1.0'>cредний </div>
+                            <div class="item-atr" data-value = '1.06'>высокий </div>
+                            <div class="item-atr" data-value = '1.21'> очень высокий </div>
+                            <div class="item-atr" data-value = '1.56'> критический </div>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div class="text-info">    6)Неустойчивость окружения в. машины</div>     
+                            <div class="item-atr" data-value = '0.75'>Очень низкий </div>
+                            <div class="item-atr" data-value = '0.87'>низкий </div>
+                            <div class="item-atr" data-value = '1.0'>cредний </div>
+                            <div class="item-atr" data-value = '1.15'>высокий </div>
+                            <div class="item-atr" data-value = '1.30'> очень высокий </div>
+                            <div class="item-atr" data-value = '1.65'> критический </div>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div class="text-info">       7)Требуемое время восстановления</div>   
+                            <div class="item-atr" data-value = '0.75'>Очень низкий </div>
+                            <div class="item-atr" data-value = '0.87'>низкий </div>
+                            <div class="item-atr" data-value = '1.0'>cредний </div>
+                            <div class="item-atr" data-value = '1.07'>высокий </div>
+                            <div class="item-atr" data-value = '1.15'> очень высокий </div>
+                            <div class="item-atr" data-value = '1.65'> критический </div>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div class="text-info">    8)Аналитические способности</div>    
+                            <div class="item-atr" data-value = '1.46'>Очень низкий </div>
+                            <div class="item-atr" data-value = '1.19'>низкий </div>
+                            <div class="item-atr" data-value = '1.0'>cредний </div>
+                            <div class="item-atr" data-value = '0.86'>высокий </div>
+                            <div class="item-atr" data-value = '0.71'> очень высокий </div>
+                            <div class="item-atr" data-value = '1.65'> критический </div>
+                        </li>
+                    
+                    
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div class="text-info">    9)Опыт разработки</div>    
+                            <div class="item-atr" data-value = '1.29'>Очень низкий </div>
+                            <div class="item-atr" data-value = '1.13'>низкий </div>
+                            <div class="item-atr" data-value = '1.0'>cредний </div>
+                            <div class="item-atr" data-value = '0.91'>высокий </div>
+                            <div class="item-atr" data-value = '0.82'> очень высокий </div>
+                            <div class="item-atr" data-value = '1.65'> критический </div>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div class="text-info">     10)Способности к разработке ПО</div>    
+                            <div class="item-atr" data-value = '1.42'>Очень низкий </div>
+                            <div class="item-atr" data-value = '1.17'>низкий </div>
+                            <div class="item-atr" data-value = '1.0'>cредний </div>
+                            <div class="item-atr" data-value = '0.86'>высокий </div>
+                            <div class="item-atr" data-value = '0.70'> очень высокий </div>
+                            <div class="item-atr" data-value = '1.65'> критический </div>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div class="text-info">   11)Опыт использования в. машины</div>     
+                            <div class="item-atr" data-value = '1.21'>Очень низкий </div>
+                            <div class="item-atr" data-value = '1.10'>низкий </div>
+                            <div class="item-atr" data-value = '1.0'>cредний </div>
+                            <div class="item-atr" data-value = '0.90'>высокий </div>
+                            <div class="item-atr" data-value = '1.65'> очень высокий </div>
+                            <div class="item-atr" data-value = '1.65'> критический </div>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div class="text-info">    12)Опыт разработки  <br> на языках программирования</div>    
+                            <div class="item-atr" data-value = '1.14'>Очень низкий </div>
+                            <div class="item-atr" data-value = '1.07'>низкий </div>
+                            <div class="item-atr" data-value = '1.0'>cредний </div>
+                            <div class="item-atr" data-value = '0.95'>высокий </div>
+                            <div class="item-atr" data-value = '1.65'> очень высокий </div>
+                            <div class="item-atr" data-value = '1.65'> критический </div>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div class="text-info">     13)Применение методов  <br> разработки ПО</div>    
+                            <div class="item-atr" data-value = '1.24'>Очень низкий </div>
+                            <div class="item-atr" data-value = '1.10'>низкий </div>
+                            <div class="item-atr" data-value = '1.0'>cредний </div>
+                            <div class="item-atr" data-value = '0.91'>высокий </div>
+                            <div class="item-atr" data-value = '0.82'> очень высокий </div>
+                            <div class="item-atr" data-value = '1.65'> критический </div>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div class="text-info">     14)Использование инструментария  <br> разработки ПО</div>    
+                            <div class="item-atr" data-value = '1.24'>Очень низкий </div>
+                            <div class="item-atr" data-value = '1.10'>низкий </div>
+                            <div class="item-atr" data-value = '1.0'>cредний </div>
+                            <div class="item-atr" data-value = '0.91'>высокий </div>
+                            <div class="item-atr" data-value = '0.83'> очень высокий </div>
+                            <div class="item-atr" data-value = '1.65'> критический </div>
+                        </li>
+                    
+                    
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div class="text-info">      15)Требования соблюдения   <br> графика разработки</div>   
+                            <div class="item-atr" data-value = '1.23'>Очень низкий </div>
+                            <div class="item-atr" data-value = '1.08'>низкий </div>
+                            <div class="item-atr" data-value = '1.0'>cредний </div>
+                            <div class="item-atr" data-value = '1.04'>высокий </div>
+                            <div class="item-atr" data-value = '1.10'> очень высокий </div>
+                            <div class="item-atr" data-value = '1.65'> критический </div>
+                        </li>
+                        
+                    
+                      </ul>
+        
+                 
+                  <button type="submit" class="btn btn-secondary mt-3 btn-block" id="tabTwoBtn">Посчитать</button>
+                </div>
+
+                <div class=" d-flex justify-content-between">
+                    <div class="px-5 py-5 bg-light">
+                        <div class="d-flex">
+                            <h5 class="">Трудоемкость</h5>
+                            <h4 class="ml-3" id="trudResultTwo">0</h4>
+                        </div>
+                    </div>  
+                    <div class="px-5 py-5 bg-light">
+                        
+
+                        <div class="d-flex">
+                            <h5 class="">Время</h5>
+                            <h4 class="ml-3" id="timeResultTwo">0</h4>
+                        </div>
+                    </div>
+                </div>
+                
+              </div>
+        </div>
+
+
+        <div class="tab-item border py-5 px-5" id='tab2'>
+            <div class="row">
+                <div class="col-md-12">
+        
+                    <div class="form-group">
+                        <label for="trud">Кол-во строк кода</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="kolStrokThree"
+                        />
+                      </div>
+
+                      <ul class="list-group list-group-flush" id="listThree">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <p class="text-info mb-0">PREC </p> 
+                            <div class="item-atr-listThree" data-value = '6.20'>Very low </div>
+                            <div class="item-atr-listThree" data-value = '4.96'>Low </div>
+                            <div class="item-atr-listThree" data-value = '3.72'>Nominal </div>
+                            <div class="item-atr-listThree" data-value = '2.48'>High </div>
+                            <div class="item-atr-listThree" data-value = '1.24'> Very high </div>
+                            <div class="item-atr-listThree" data-value = '0.00'>Extra high </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <p class="text-info mb-0">FLEX  </p> 
+                            <div class="item-atr-listThree" data-value = '5.07'>Very low </div>
+                            <div class="item-atr-listThree" data-value = '4.05'>Low </div>
+                            <div class="item-atr-listThree" data-value = '3.04'>Nominal </div>
+                            <div class="item-atr-listThree" data-value = '2.03'>High </div>
+                            <div class="item-atr-listThree" data-value = '1.01'> Very high </div>
+                            <div class="item-atr-listThree" data-value = '0.00'>Extra high </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <p class="text-info mb-0">RESL   </p> 
+                            <div class="item-atr-listThree" data-value = '7.07'>Very low </div>
+                            <div class="item-atr-listThree" data-value = '5.65'>Low </div>
+                            <div class="item-atr-listThree" data-value = '4.24'>Nominal </div>
+                            <div class="item-atr-listThree" data-value = '2.83'>High </div>
+                            <div class="item-atr-listThree" data-value = '1.41'> Very high </div>
+                            <div class="item-atr-listThree" data-value = '0.00'>Extra high </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <p class="text-info mb-0">TEAM    </p> 
+                            <div class="item-atr-listThree" data-value = '5.48'>Very low </div>
+                            <div class="item-atr-listThree" data-value = '4.38'>Low </div>
+                            <div class="item-atr-listThree" data-value = '3.29'>Nominal </div>
+                            <div class="item-atr-listThree" data-value = '2.19'>High </div>
+                            <div class="item-atr-listThree" data-value = '1.10'> Very high </div>
+                            <div class="item-atr-listThree" data-value = '0.00'>Extra high </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <p class="text-info mb-0">PMAT     </p> 
+                            <div class="item-atr-listThree" data-value = '7.80'>Very low </div>
+                            <div class="item-atr-listThree" data-value = '6.24'>Low </div>
+                            <div class="item-atr-listThree" data-value = '4.68'>Nominal </div>
+                            <div class="item-atr-listThree" data-value = '3.12'>High </div>
+                            <div class="item-atr-listThree" data-value = '1.56'> Very high </div>
+                            <div class="item-atr-listThree" data-value = '0.00'>Extra high </div>
+                        </li>
+                    
+                      </ul>
+        
+                      <div class="input-group mb-3 mt-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01"
+                            >Оценка</label
+                          >
+                        </div>
+                        <select class="custom-select" id="tabThreeSelectType">
+                          <option selected>Выберите</option>
+                          <option value="0">Предварительная оценка</option>
+                          <option value="1">Детальная оценка</option>
+                        </select>
+                      </div>
+
+                     
+
+                      <div class="ocenka-item d-none" id="ocenka1">
+                        <h3 class="py-3">Предварительная оценка</h3>
+                        <ul class="list-group list-group-flush" id="listFour">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">PERS  </p>
+                                <div class="item-atr-listFour" data-value = '2.12'>Extra low </div> 
+                                <div class="item-atr-listFour" data-value = '1.62'>Very low </div>
+                                <div class="item-atr-listFour" data-value = '1.26'>Low </div>
+                                <div class="item-atr-listFour" data-value = '1.00'>Nominal </div>
+                                <div class="item-atr-listFour" data-value = '0.83'>High </div>
+                                <div class="item-atr-listFour" data-value = '0.63'> Very high </div>
+                                <div class="item-atr-listFour" data-value = '0.50'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">PREX   </p> 
+                                <div class="item-atr-listFour" data-value = '1.59'>Extra low </div> 
+                                <div class="item-atr-listFour" data-value = '1.33'>Very low </div>
+                                <div class="item-atr-listFour" data-value = '1.22'>Low </div>
+                                <div class="item-atr-listFour" data-value = '1.00'>Nominal </div>
+                                <div class="item-atr-listFour" data-value = '0.87'>High </div>
+                                <div class="item-atr-listFour" data-value = '0.74'> Very high </div>
+                                <div class="item-atr-listFour" data-value = '0.62'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">RCPX    </p> 
+                                <div class="item-atr-listFour" data-value = '0.49'>Extra low </div> 
+                                <div class="item-atr-listFour" data-value = '0.60'>Very low </div>
+                                <div class="item-atr-listFour" data-value = '0.83'>Low </div>
+                                <div class="item-atr-listFour" data-value = '1.00'>Nominal </div>
+                                <div class="item-atr-listFour" data-value = '1.33'>High </div>
+                                <div class="item-atr-listFour" data-value = '1.91'> Very high </div>
+                                <div class="item-atr-listFour" data-value = '2.72'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">RUSE     </p> 
+                                <div class="item-atr-listFour" data-value = '1.40'>Extra low </div> 
+                                <div class="item-atr-listFour" data-value = '0.60'>Very low </div>
+                                <div class="item-atr-listFour" data-value = '0.95'>Low </div>
+                                <div class="item-atr-listFour" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFour" data-value = '1.07'>High </div>
+                                <div class="item-atr-listFour" data-value = '1.15'> Very high </div>
+                                <div class="item-atr-listFour" data-value = '1.24'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">PDIF      </p> 
+                                <div class="item-atr-listFour" data-value = '1.40'>Extra low </div> 
+                                <div class="item-atr-listFour" data-value = '0.60'>Very low </div>
+                                <div class="item-atr-listFour" data-value = '0.87'>Low </div>
+                                <div class="item-atr-listFour" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFour" data-value = '1.29'>High </div>
+                                <div class="item-atr-listFour" data-value = '1.81'> Very high </div>
+                                <div class="item-atr-listFour" data-value = '2.61'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">FCIL       </p> 
+                                <div class="item-atr-listFour" data-value = '1.43'>Extra low </div> 
+                                <div class="item-atr-listFour" data-value = '1.30'>Very low </div>
+                                <div class="item-atr-listFour" data-value = '1.10'>Low </div>
+                                <div class="item-atr-listFour" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFour" data-value = '0.87'>High </div>
+                                <div class="item-atr-listFour" data-value = '0.73'> Very high </div>
+                                <div class="item-atr-listFour" data-value = '0.62'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">SCED        </p> 
+                                <div class="item-atr-listFour" data-value = '1.40'>Extra low </div> 
+                                <div class="item-atr-listFour" data-value = '1.43'>Very low </div>
+                                <div class="item-atr-listFour" data-value = '1.14'>Low </div>
+                                <div class="item-atr-listFour" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFour" data-value = '1.0'>High </div>
+                                <div class="item-atr-listFour" data-value = '0.70'> Very high </div>
+                                <div class="item-atr-listFour" data-value = '0.60'>Extra high </div>
+                            </li>
+                        
+                          </ul>
+                      </div>
+                      
+                      <div class="ocenka-item d-none" id="ocenka2">
+                          <h3 class="py-3">Детальная оценка</h3>
+                          <ul class="list-group list-group-flush" id="listFive">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">ACAP        </p> 
+                                <div class="item-atr-listFive" data-value = '1.42'>Very low </div>
+                                <div class="item-atr-listFive" data-value = '1.29'>Low </div>
+                                <div class="item-atr-listFive" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFive" data-value = '0.85'>High </div>
+                                <div class="item-atr-listFive" data-value = '0.71'> Very high </div>
+                                <div class="item-atr-listFive" data-value = '1.40'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">AEXP        </p> 
+                                <div class="item-atr-listFive" data-value = '1.22'>Very low </div>
+                                <div class="item-atr-listFive" data-value = '1.10'>Low </div>
+                                <div class="item-atr-listFive" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFive" data-value = '0.88'>High </div>
+                                <div class="item-atr-listFive" data-value = '0.81'> Very high </div>
+                                <div class="item-atr-listFive" data-value = '1.40'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">PCAP        </p> 
+                                <div class="item-atr-listFive" data-value = '1.34'>Very low </div>
+                                <div class="item-atr-listFive" data-value = '1.15'>Low </div>
+                                <div class="item-atr-listFive" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFive" data-value = '0.88'>High </div>
+                                <div class="item-atr-listFive" data-value = '0.76'> Very high </div>
+                                <div class="item-atr-listFive" data-value = '1.40'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">PCON        </p> 
+                                <div class="item-atr-listFive" data-value = '1.29'>Very low </div>
+                                <div class="item-atr-listFive" data-value = '1.12'>Low </div>
+                                <div class="item-atr-listFive" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFive" data-value = '1.90'>High </div>
+                                <div class="item-atr-listFive" data-value = '0.81'> Very high </div>
+                                <div class="item-atr-listFive" data-value = '1.40'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">PEXP        </p> 
+                                <div class="item-atr-listFive" data-value = '1.19'>Very low </div>
+                                <div class="item-atr-listFive" data-value = '1.09'>Low </div>
+                                <div class="item-atr-listFive" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFive" data-value = '0.91'>High </div>
+                                <div class="item-atr-listFive" data-value = '0.85'> Very high </div>
+                                <div class="item-atr-listFive" data-value = '1.40'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">LTEX        </p> 
+                                <div class="item-atr-listFive" data-value = '1.20'>Very low </div>
+                                <div class="item-atr-listFive" data-value = '1.09'>Low </div>
+                                <div class="item-atr-listFive" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFive" data-value = '0.91'>High </div>
+                                <div class="item-atr-listFive" data-value = '0.84'> Very high </div>
+                                <div class="item-atr-listFive" data-value = '1.40'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">RELY        </p> 
+                                <div class="item-atr-listFive" data-value = '0.84'>Very low </div>
+                                <div class="item-atr-listFive" data-value = '0.92'>Low </div>
+                                <div class="item-atr-listFive" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFive" data-value = '1.10'>High </div>
+                                <div class="item-atr-listFive" data-value = '1.26'> Very high </div>
+                                <div class="item-atr-listFive" data-value = '1.40'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">DATA        </p> 
+                                <div class="item-atr-listFive" data-value = '0.70'>Very low </div>
+                                <div class="item-atr-listFive" data-value = '0.23'>Low </div>
+                                <div class="item-atr-listFive" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFive" data-value = '1.14'>High </div>
+                                <div class="item-atr-listFive" data-value = '1.28'> Very high </div>
+                                <div class="item-atr-listFive" data-value = '1.40'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">CPLX        </p> 
+                                <div class="item-atr-listFive" data-value = '0.73'>Very low </div>
+                                <div class="item-atr-listFive" data-value = '0.87'>Low </div>
+                                <div class="item-atr-listFive" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFive" data-value = '1.17'>High </div>
+                                <div class="item-atr-listFive" data-value = '1.34'> Very high </div>
+                                <div class="item-atr-listFive" data-value = '1.74'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">RUSE        </p> 
+                                <div class="item-atr-listFive" data-value = '0.70'>Very low </div>
+                                <div class="item-atr-listFive" data-value = '0.95'>Low </div>
+                                <div class="item-atr-listFive" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFive" data-value = '1.07'>High </div>
+                                <div class="item-atr-listFive" data-value = '1.15'> Very high </div>
+                                <div class="item-atr-listFive" data-value = '1.24'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">DOCU        </p> 
+                                <div class="item-atr-listFive" data-value = '0.81'>Very low </div>
+                                <div class="item-atr-listFive" data-value = '0.91'>Low </div>
+                                <div class="item-atr-listFive" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFive" data-value = '1.11'>High </div>
+                                <div class="item-atr-listFive" data-value = '1.23'> Very high </div>
+                                <div class="item-atr-listFive" data-value = '1.60'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">TIME        </p> 
+                                <div class="item-atr-listFive" data-value = '0.75'>Very low </div>
+                                <div class="item-atr-listFive" data-value = '0.88'>Low </div>
+                                <div class="item-atr-listFive" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFive" data-value = '1.15'>High </div>
+                                <div class="item-atr-listFive" data-value = '1.40'> Very high </div>
+                                <div class="item-atr-listFive" data-value = '1.65'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">STOR        </p> 
+                                <div class="item-atr-listFive" data-value = '0.80'>Very low </div>
+                                <div class="item-atr-listFive" data-value = '0.80'>Low </div>
+                                <div class="item-atr-listFive" data-value = '1.10'>Nominal </div>
+                                <div class="item-atr-listFive" data-value = '1.05'>High </div>
+                                <div class="item-atr-listFive" data-value = '1.17'> Very high </div>
+                                <div class="item-atr-listFive" data-value = '1.46'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">PVOL        </p> 
+                                <div class="item-atr-listFive" data-value = '0.80'>Very low </div>
+                                <div class="item-atr-listFive" data-value = '0.87'>Low </div>
+                                <div class="item-atr-listFive" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFive" data-value = '1.15'>High </div>
+                                <div class="item-atr-listFive" data-value = '1.30'> Very high </div>
+                                <div class="item-atr-listFive" data-value = '1.46'>Extra high </div>
+                            </li>
+                            
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">TOOL         </p> 
+                                <div class="item-atr-listFive" data-value = '1.17'>Very low </div>
+                                <div class="item-atr-listFive" data-value = '1.09'>Low </div>
+                                <div class="item-atr-listFive" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFive" data-value = '0.90'>High </div>
+                                <div class="item-atr-listFive" data-value = '0.78'> Very high </div>
+                                <div class="item-atr-listFive" data-value = '0.80'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">SITE        </p> 
+                                <div class="item-atr-listFive" data-value = '1.22'>Very low </div>
+                                <div class="item-atr-listFive" data-value = '1.09'>Low </div>
+                                <div class="item-atr-listFive" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFive" data-value = '0.93'>High </div>
+                                <div class="item-atr-listFive" data-value = '0.86'> Very high </div>
+                                <div class="item-atr-listFive" data-value = '0.80'>Extra high </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p class="text-info mb-0">SCED        </p> 
+                                <div class="item-atr-listFive" data-value = '1.43'>Very low </div>
+                                <div class="item-atr-listFive" data-value = '1.14'>Low </div>
+                                <div class="item-atr-listFive" data-value = '1.0'>Nominal </div>
+                                <div class="item-atr-listFive" data-value = '1.0'>High </div>
+                                <div class="item-atr-listFive" data-value = '1.0'> Very high </div>
+                                <div class="item-atr-listFive" data-value = '0.80'>Extra high </div>
+                            </li>
+                        
+                          </ul>
+                      </div>
+                     
+        
+                 
+                  <button type="submit" class="btn btn-secondary mt-3 btn-block" id="tabThreeBtn">Посчитать</button>
+                </div>
+
+                <div class=" d-flex justify-content-between">
+                    <div class="px-5 py-5 bg-light">
+                        <div class="d-flex">
+                            <h5 class="">Трудоемкость</h5>
+                            <h4 class="ml-3" id="trudResultThree">0</h4>
+                        </div>
+                    </div>  
+                    <div class="px-5 py-5 bg-light">
+                        
+
+                        <div class="d-flex">
+                            <h5 class="">Время</h5>
+                            <h4 class="ml-3" id="timeResultThree">0</h4>
+                        </div>
+                    </div>
+                    <div class="px-5 py-5 bg-light">
+                        
+
+                        <div class="d-flex">
+                            <h5 class="">E</h5>
+                            <h4 class="ml-3" id="Eresult">0</h4>
+                        </div>
+                    </div>
+                </div>
+                
+              </div>
+        </div>
+      </div>
+     
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
